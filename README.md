@@ -31,6 +31,7 @@ Sistema simples para gerenciamento de reservas de veículos, desenvolvido em PHP
 
 ## 📂 Estrutura do Projeto
 
+```
 Reserva-Veiculos/
 ├── conexao.php # Conexão com o banco de dados
 ├── pagina_listar.php # Página principal com listagem de veículos
@@ -39,7 +40,7 @@ Reserva-Veiculos/
 ├── banco.sql # Script para criação da tabela (opcional)
 ├── composer.json # Configuração do Composer (se usado)
 └── vendor/ # Autoload do Composer
-
+```
 
 ---
 
@@ -50,30 +51,32 @@ Reserva-Veiculos/
 ```bash
 git clone https://github.com/Tecnologia-JNG/Reserva-Veiculos.git
 cd Reserva-Veiculos
+```
 
-2. Configurar o Banco de Dados
+### 2. Configurar o Banco de Dados
 Crie um banco no MySQL com nome reserva_veiculos
 
 Importe o script SQL (banco.sql se existir)
 
-3. Configurar Conexão com o Banco
+### 3. Configurar Conexão com o Banco
 Edite o arquivo conexao.php com suas credenciais:
 
+```bash
 $host = 'localhost';
 $usuario = 'root';
 $senha = '';
 $banco = 'reserva_veiculos';
+```
 
-4. Iniciar o Servidor Local
+### 4. Iniciar o Servidor Local
 Se estiver usando o PHP embutido:
 
-bash
-Copiar
-Editar
+```bash
 php -S localhost:8000
 Acesse: http://localhost:8000/pagina_listar.php
+```
 
-🧪 Exemplo de Uso
+## 🧪 Exemplo de Uso
 Acesse a página inicial.
 
 Veja a lista de veículos.
@@ -84,18 +87,12 @@ Preencha data, horário e confirme.
 
 O sistema verifica conflitos e salva a reserva.
 
-📝 Licença
+## 📝 Licença
 Este projeto é licenciado sob os termos da Licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-🙋‍♂️ Autor
+## 🙋‍♂️ Autor
 Desenvolvido por Tecnologia JNG 💻
 
 Se este projeto te ajudou, deixe uma ⭐ no repositório!
 
-yaml
-Copiar
-Editar
-
 ---
-
-Se quiser, posso gerar o arquivo `.md` pronto para você baixar. Quer que eu envie?
