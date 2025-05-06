@@ -96,3 +96,12 @@ Desenvolvido por Tecnologia JNG 💻
 Se este projeto te ajudou, deixe uma ⭐ no repositório!
 
 ---
+
+## 📣 Contato
+
+- **Autor:** Tecnologia JNG  
+- **E-mail:** ti@jng.com  
+
+---
+
+> “O sucesso nasce do querer, da determinação e da vontade de se chegar a um ideal.” – Napoleon Hill
