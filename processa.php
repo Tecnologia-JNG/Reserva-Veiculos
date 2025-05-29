@@ -13,8 +13,11 @@ $nome = $_POST['nome'] ?? '';
 $carro = $_POST['carro'] ?? '';
 $ramal = $_POST['ramal'] ?? '';
 $data = $_POST['data'] ?? '';
+$data_original = date('d/m/Y', strtotime($data)); // formato para exibir no e-mail
+$data = mysqli_real_escape_string($conn, $data_original); // salva como d/m/Y no banco
 $motivo = $_POST['motivo'] ?? '';
 $periodo = $_POST['periodo'] ?? '';
+$email = $_POST['email'] ?? '';
 
 // Verificar se os campos obrigatórios estão preenchidos
 if (empty($nome) || empty($data) || empty($motivo)) {
@@ -29,20 +32,18 @@ $carro = mysqli_real_escape_string($conn, $carro);
 $ramal = mysqli_real_escape_string($conn, $ramal);
 $motivo = mysqli_real_escape_string($conn, $motivo);
 $periodo = mysqli_real_escape_string($conn, $periodo);
+$data = mysqli_real_escape_string($conn, $data);
+$email = mysqli_real_escape_string($conn, $email);
 
-// Formatar a data corretamente
-$data_formatada = date('Y-m-d', strtotime($data));
-
-// Verificar se já existe agendamento para o mesmo carro e data
-$query_check = "SELECT * FROM cadastro WHERE carro = '$carro' AND data = '$data_formatada'";
+$query_check = "SELECT * FROM cadastro WHERE carro = '$carro' AND data = '$data'";
 $result_check = mysqli_query($conn, $query_check);
 
 if (mysqli_num_rows($result_check) > 0) {
     while ($row = mysqli_fetch_assoc($result_check)) {
         $periodo_existente = $row['periodo'];
 
+        // Regras de bloqueio
         if ($periodo_existente == 'Integral' || $periodo == 'Integral' || $periodo_existente == $periodo) {
-            // Se já tiver agendamento Integral, ou se novo agendamento for Integral, ou for o mesmo período, bloqueia
             $_SESSION['msg'] = "<div class='alert'>Desculpe, esse carro já está agendado para esse período. Tente outro horário.</div>";
             header("Location: reserva_carro.php");
             exit;
@@ -66,20 +67,23 @@ try {
     $mail->Port = 587;
 
     // Destinatário
-    $mail->setFrom('ti@jng.com.br', 'Reserva Carro');
+    $mail->setFrom('reserva.veiculo@jng.com.br', 'Reserva de veículos');
     $mail->addAddress('rh@jng.com.br', 'Recurso Humano');
-    $mail->addAddress('ti@jng.com.br', 'Reserva Carro'); 
+
+    if (!empty($email)) {
+        $mail->addAddress($email, $nome);
+    }
 
     // Conteúdo do e-mail
     $mail->isHTML(true);
-    $mail->Subject = 'Novo Agendamento de Carro';
+    $mail->Subject = 'Reserva do veículo '. $carro;
     $mail->Body = "
         <p>Você tem um novo agendamento:</p>
         <p><strong>Nome:</strong> $nome</p>
         <p><strong>Ramal:</strong> $ramal</p>
         <p><strong>Carro:</strong> $carro</p>
         <p><strong>Motivo:</strong> $motivo</p>
-        <p><strong>Data:</strong> $data_formatada</p>
+        <p><strong>Data:</strong> $data_original</p>
         <p><strong>Período:</strong> $periodo</p>
         <img src='https://www.jng.com.br/Assinaturas/logo_base.png' alt='Canva JNG' height='100' width='600'>
     ";
@@ -88,8 +92,8 @@ try {
     $mail->send();
 
     // Agora vamos salvar o agendamento no banco de dados
-    $query_insert = "INSERT INTO cadastro (nome, carro, ramal, data, motivo, periodo) 
-                     VALUES ('$nome', '$carro', '$ramal', '$data_formatada', '$motivo', '$periodo')";
+    $query_insert = "INSERT INTO cadastro (nome, carro, ramal, data, motivo, periodo, email) 
+                     VALUES ('$nome', '$carro', '$ramal', '$data', '$motivo', '$periodo', '$email')";
     $result_insert = mysqli_query($conn, $query_insert);
 
     // Verificar se a inserção foi bem-sucedida
