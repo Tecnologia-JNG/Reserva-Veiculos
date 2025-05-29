@@ -58,24 +58,6 @@ Crie um banco no MySQL com nome reserva_veiculos
 
 Importe o script SQL (banco.sql se existir)
 
-### 3. Configurar Conexão com o Banco
-Edite o arquivo conexao.php com suas credenciais:
-
-```bash
-$host = 'localhost';
-$usuario = 'root';
-$senha = '';
-$banco = 'reserva_veiculos';
-```
-
-### 4. Iniciar o Servidor Local
-Se estiver usando o PHP embutido:
-
-```bash
-php -S localhost:8000
-Acesse: http://localhost:8000/pagina_listar.php
-```
-
 ## 🧪 Exemplo de Uso
 Acesse a página inicial.
 
