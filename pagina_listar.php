@@ -1,7 +1,5 @@
 <?php
-session_start();
-include_once("conexao.php");
-
+//Colocar servidor e sql informação//
 ?>
 
 <head>
