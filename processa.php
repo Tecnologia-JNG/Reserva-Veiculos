@@ -1,3 +1,4 @@
 <?php
-//Colocar servidor e sql informação e sendemail//
+informação SQL
 ?>
+
