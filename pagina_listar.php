@@ -1,6 +1,10 @@
 <?php
-//Colocar servidor e sql informação//
+informação SQL
 ?>
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
 	<meta charset="UTF-8" />
@@ -53,8 +57,8 @@
 			text-decoration: none;
 			font-weight: 500;
 			font-size: 15px;
-			transition: color 0.3s, transform 0.3s;
 			position: relative;
+			transition: color 0.3s, transform 0.3s;
 		}
 
 		.nav-links a::after {
@@ -76,60 +80,6 @@
 			width: 100%;
 		}
 
-		.dark-mode .form-container {
-			background-color: #1f1f1f;
-			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-		}
-
-		.dark-mode .form-side h2 {
-			color: #ffffff;
-		}
-
-		.dark-mode .form-group label {
-			color: #ccc;
-		}
-
-		.dark-mode .form-group input,
-		.dark-mode .form-group select,
-		.dark-mode .form-group textarea {
-			background-color: #2c2c2c;
-			color: #f5f5f5;
-			border: 1px solid #444;
-		}
-
-		.dark-mode .form-actions button {
-			background: #00aae3;
-		}
-
-		.dark-mode .form-actions button:hover {
-			background: #00aae3;
-		}
-
-		.dark-mode-btn {
-			background: #00aae3;
-			color: white;
-			border: none;
-			border-radius: 50%;
-			width: 42px;
-			height: 42px;
-			font-size: 18px;
-			cursor: pointer;
-			transition: background 0.3s, transform 0.3s;
-		}
-
-		.dark-mode-btn:hover {
-			background: #007ba1;
-			transform: rotate(20deg);
-		}
-
-		.dark-mode .dark-mode-btn {
-			background: #00aae3;
-		}
-
-		.dark-mode .dark-mode-btn:hover {
-			background: #00aae3;
-		}
-
 		.dark-mode {
 			background-color: #121212;
 			color: #e0e0e0;
@@ -137,7 +87,6 @@
 
 		.dark-mode .panel {
 			background-color: #1e1e1e;
-			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 			color: #e0e0e0;
 		}
 
@@ -159,9 +108,16 @@
 		main {
 			flex: 1;
 			display: flex;
-			align-items: center;
 			justify-content: center;
 			padding: 40px 20px;
+		}
+
+		.container-agendamentos {
+			display: flex;
+			gap: 20px;
+			width: 100%;
+			justify-content: center;
+			flex-wrap: wrap;
 		}
 
 		.panel {
@@ -169,14 +125,28 @@
 			border-radius: 10px;
 			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 			padding: 30px 40px;
-			margin: 20px;
+			margin: 20px 0;
+		}
+
+		.agendamento-scroll {
+			max-height: 550px;
+			overflow-y: auto;
+		}
+
+		.agendamento-scroll::-webkit-scrollbar {
+			width: 8px;
+		}
+
+		.agendamento-scroll::-webkit-scrollbar-thumb {
+			background-color: #00aae3;
+			border-radius: 10px;
 		}
 
 		.section-title {
-			font-size: 28px;
+			font-size: 24px;
 			font-weight: 600;
 			color: #003366;
-			margin-bottom: 30px;
+			margin-bottom: 25px;
 			display: flex;
 			align-items: center;
 			gap: 15px;
@@ -189,15 +159,12 @@
 			border-bottom-color: #00aae3;
 		}
 
-		/* ... HEADER E NAVEGAÇÃO PERMANECEM IGUAIS ... */
-
-		/* ========== NOVO: Estilo melhorado do bloco de agendamento ========== */
 		.agendamento {
 			background-color: #fff;
 			border-left: 6px solid #00aae3;
 			border-radius: 10px;
 			padding: 20px 25px;
-			margin-bottom: 25px;
+			margin-bottom: 20px;
 			box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 			transition: transform 0.3s;
 		}
@@ -206,18 +173,25 @@
 			transform: translateY(-2px);
 		}
 
+		.agendamento .col {
+			flex: 1;
+			min-width: 180px;
+		}
+
 		.agendamento p {
-			margin-bottom: 10px;
-			font-size: 16px;
 			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+			margin-bottom: 8px;
+			font-size: 16px;
 			align-items: center;
 		}
 
 		.agendamento strong {
 			display: inline-block;
-			width: 110px;
-			color: #003366;
+			min-width: 100px;
 			font-weight: 600;
+			color: #003366;
 		}
 
 		.icon-user {
@@ -226,31 +200,32 @@
 		}
 
 		.icon-phone {
-			color: #28a745;
+			color: #007bff;
 			margin: 5px;
 		}
 
 		.icon-sala {
-			color: #17a2b8;
+			color: #007bff;
 			margin: 5px;
 		}
 
 		.icon-motivo {
-			color: #ffc107;
+			color: #007bff;
 			margin: 5px;
 		}
 
 		.icon-clock {
-			color: #6f42c1;
+			color: #007bff;
 			margin: 5px;
 		}
 
 		.icon-periodo {
-			color: #e83e8c;
+			color: #007bff;
 			margin: 5px;
 		}
 
 		.icon-car {
+			color: #007bff;
 			margin: 5px;
 		}
 
@@ -261,30 +236,26 @@
 			color: white;
 			padding: 14px;
 			background: #003366;
-			color: white;
 			font-size: 16px;
 			border: none;
 			border-radius: 6px;
 			cursor: pointer;
 			transition: 0.3s ease;
+			margin: 40px auto;
+			display: block;
+			margin-right: 100px;
 		}
 
 		.a-button:hover {
 			background: #00aae3;
 		}
 
-		.a-button {
-			margin-left: 80%;
-		}
-
-
-		/* FOOTER */
 		footer {
 			background: #003366;
 			color: white;
 			text-align: center;
 			padding: 20px;
-			margin-top: 60px;
+			margin-top: auto;
 		}
 
 		footer a {
@@ -292,47 +263,38 @@
 			text-decoration: none;
 		}
 
-		/* RESPONSIVE */
-		@media (max-width: 768px) {
-			main {
-				padding: 20px 15px;
+		.dark-mode-btn {
+			background: #00aae3;
+			color: white;
+			border: none;
+			border-radius: 50%;
+			width: 42px;
+			height: 42px;
+			font-size: 18px;
+			cursor: pointer;
+			transition: background 0.3s, transform 0.3s;
+		}
+
+		.dark-mode-btn:hover {
+			background: #007ba1;
+			transform: rotate(20deg);
+		}
+
+		@media (max-width: 992px) {
+			.container-agendamentos {
+				flex-direction: column;
+				align-items: center;
 			}
 
-			.panel {
-				padding: 20px 25px;
-			}
-
-			.section-title {
-				font-size: 22px;
-				gap: 10px;
-			}
-
-			.agendamento p {
-				font-size: 14px;
-			}
-
-			.agendamento strong {
-				width: 90px;
-			}
-
-			nav.nav-links a {
-				margin-left: 15px;
-				font-size: 14px;
+			.agendamento-scroll {
+				width: 100%;
+				max-width: 600px;
 			}
 		}
 	</style>
-
-	<script>
-		// Função simples para toggle Dark Mode (exemplo básico)
-		function toggleDarkMode() {
-			document.body.classList.toggle('dark-mode');
-			// Você pode expandir para trocar cores, salvar no localStorage, etc.
-		}
-	</script>
 </head>
 
 <body>
-
 	<header>
 		<div class="container">
 			<img src="https://www.jng.com.br/site/img/logos/logo.svg" width="120" alt="Logo">
@@ -355,55 +317,58 @@
 	</script>
 
 	<main>
+		<div class="container-agendamentos">
+			<div class="panel agendamento-scroll">
+				<div class="section-title"><i class="fas fa-calendar-day"></i> Agendamentos para hoje</div>
+				<?php
+				$query_hoje = "
+					SELECT * FROM cadastro 
+					WHERE DAY(STR_TO_DATE(data, '%d/%m/%Y')) = DAY(CURDATE())
+					  AND MONTH(STR_TO_DATE(data, '%d/%m/%Y')) = MONTH(CURDATE())
+				";
+				$resultado_hoje = mysqli_query($conn, $query_hoje);
+				while ($row = mysqli_fetch_array($resultado_hoje)) {
+					echo "<div class='agendamento'><div class='agendamento-grid'>";
+					echo "<div class='col'>";
+					echo "<p><i class='fas fa-user icon-user'></i><strong>Nome:</strong> {$row['nome']}</p>";
+					echo "<p><i class='fas fa-phone icon-phone'></i><strong>Ramal:</strong> {$row['ramal']}</p>";
+					echo "<p><i class='fas fa-car icon-car'></i><strong>Carro:</strong> {$row['carro']}</p>";
+					echo "</div><div class='col'>";
+					echo "<p><i class='fas fa-info-circle icon-motivo'></i><strong>Motivo:</strong> {$row['motivo']}</p>";
+					echo "<p><i class='fas fa-clock icon-clock'></i><strong>Data:</strong> {$row['data']}</p>";
+					echo "<p><i class='fa-solid fa-circle-half-stroke icon-periodo'></i><strong>Período:</strong> {$row['periodo']}</p>";
+					echo "</div></div></div>";
+				}
+				?>
+			</div>
 
-		<div class="panel">
-			<div class="section-title"><i class="fas fa-calendar-day"></i> Agendamentos para hoje</div>
-			<?php
-			// Hoje: dia e mês iguais, independente do ano
-			$query_hoje = "
-			SELECT * FROM cadastro 
-			WHERE DAY(STR_TO_DATE(data, '%d/%m/%Y')) = DAY(CURDATE())
-			  AND MONTH(STR_TO_DATE(data, '%d/%m/%Y')) = MONTH(CURDATE())
-		";
-			$resultado_hoje = mysqli_query($conn, $query_hoje);
-			while ($row = mysqli_fetch_array($resultado_hoje)) {
-				echo "<div class='agendamento'>";
-				echo "<p><i class='fas fa-user icon-user'></i><strong>Nome:</strong> {$row['nome']}</p>";
-				echo "<p><i class='fas fa-phone icon-phone'></i><strong>Ramal:</strong> {$row['ramal']}</p>";
-				echo "<p><i class='fas fa-car icon-car'></i><strong>Carro:</strong> {$row['carro']}</p>";
-				echo "<p><i class='fas fa-info-circle icon-motivo'></i><strong>Motivo:</strong> {$row['motivo']}</p>";
-				echo "<p><i class='fas fa-clock icon-clock'></i><strong>Data:</strong> {$row['data']}</p>";
-				echo "<p><i class='fa-solid fa-circle-half-stroke icon-periodo'></i><strong>Período:</strong> {$row['periodo']}</p>";
-				echo "</div>";
-			}
-			?>
-		</div>
+			<div class="panel agendamento-scroll">
+				<div class="section-title"><i class="fas fa-calendar-alt"></i> Agendamentos próximos 15 dias</div>
+				<?php
+				$hoje = date('Y-m-d');
+				$quinzeDiasDepois = date('Y-m-d', strtotime('+15 days'));
 
-		<div class="panel">
-			<div class="section-title success"><i class="fas fa-calendar-alt"></i> Agendamentos próximos 15 dias</div>
-			<?php
-			// Data atual e daqui 15 dias, no formato correto para comparar
-			$hoje = date('Y-m-d');
-			$quinzeDiasDepois = date('Y-m-d', strtotime('+15 days'));
-
-			$query_15dias = "
-			SELECT * FROM cadastro 
-			WHERE STR_TO_DATE(data, '%d/%m/%Y') > '$hoje'
-			  AND STR_TO_DATE(data, '%d/%m/%Y') <= '$quinzeDiasDepois'
-			ORDER BY STR_TO_DATE(data, '%d/%m/%Y') ASC
-		";
-			$resultado_15dias = mysqli_query($conn, $query_15dias);
-			while ($row = mysqli_fetch_array($resultado_15dias)) {
-				echo "<div class='agendamento'>";
-				echo "<p><i class='fas fa-user icon-user'></i><strong>Nome:</strong> {$row['nome']}</p>";
-				echo "<p><i class='fas fa-phone icon-phone'></i><strong>Ramal:</strong> {$row['ramal']}</p>";
-				echo "<p><i class='fas fa-car icon-car'></i><strong>Carro:</strong> {$row['carro']}</p>";
-				echo "<p><i class='fas fa-info-circle icon-motivo'></i><strong>Motivo:</strong> {$row['motivo']}</p>";
-				echo "<p><i class='fas fa-clock icon-clock'></i><strong>Data:</strong> {$row['data']}</p>";
-				echo "<p><i class='fa-solid fa-circle-half-stroke icon-periodo'></i><strong>Período:</strong> {$row['periodo']}</p>";
-				echo "</div>";
-			}
-			?>
+				$query_15dias = "
+					SELECT * FROM cadastro 
+					WHERE STR_TO_DATE(data, '%d/%m/%Y') > '$hoje'
+					  AND STR_TO_DATE(data, '%d/%m/%Y') <= '$quinzeDiasDepois'
+					ORDER BY STR_TO_DATE(data, '%d/%m/%Y') ASC
+				";
+				$resultado_15dias = mysqli_query($conn, $query_15dias);
+				while ($row = mysqli_fetch_array($resultado_15dias)) {
+					echo "<div class='agendamento'><div class='agendamento-grid'>";
+					echo "<div class='col'>";
+					echo "<p><i class='fas fa-user icon-user'></i><strong>Nome:</strong> {$row['nome']}</p>";
+					echo "<p><i class='fas fa-phone icon-phone'></i><strong>Ramal:</strong> {$row['ramal']}</p>";
+					echo "<p><i class='fas fa-car icon-car'></i><strong>Carro:</strong> {$row['carro']}</p>";
+					echo "</div><div class='col'>";
+					echo "<p><i class='fas fa-info-circle icon-motivo'></i><strong>Motivo:</strong> {$row['motivo']}</p>";
+					echo "<p><i class='fas fa-clock icon-clock'></i><strong>Data:</strong> {$row['data']}</p>";
+					echo "<p><i class='fa-solid fa-circle-half-stroke icon-periodo'></i><strong>Período:</strong> {$row['periodo']}</p>";
+					echo "</div></div></div>";
+				}
+				?>
+			</div>
 		</div>
 	</main>
 
@@ -413,7 +378,26 @@
 		<p>&copy; 2025 Intranet | JNG — <a href="https://www.jng.com.br" target="_blank">GRUPO JNG</a></p>
 	</footer>
 
+	<script>
+		function toggleDarkMode() {
+			document.body.classList.toggle("dark-mode");
 
+			// Salva o estado atual no localStorage
+			const isDark = document.body.classList.contains("dark-mode");
+			localStorage.setItem("theme", isDark ? "dark" : "light");
+		}
+
+		// Aplica o tema salvo ao carregar a página
+		window.addEventListener("DOMContentLoaded", function() {
+			const savedTheme = localStorage.getItem("theme");
+			if (savedTheme === "dark") {
+				document.body.classList.add("dark-mode");
+			}
+		});
+
+		// Evento no botão (caso ainda não tenha)
+		document.getElementById("toggle-theme").addEventListener("click", toggleDarkMode);
+	</script>
 </body>
 
 </html>
