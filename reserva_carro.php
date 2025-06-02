@@ -1,6 +1,7 @@
 <?php
-//Colocar servidor e sql informação//
+informação SQL
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -299,7 +300,7 @@
 
         .image-side {
             flex: 1;
-            background: url('https://grupocare.com.br/wp-content/uploads/2021/10/car-salesman-make-a-deal-and-hand-over-the-key-2021-09-30-16-35-45-utc-940x940.jpg') no-repeat center center;
+            background: url('./reserva-de-carros.jpg') no-repeat center center;
             background-size: cover;
         }
 
@@ -438,7 +439,22 @@
     <script>
         function toggleDarkMode() {
             document.body.classList.toggle("dark-mode");
+
+            // Salva o estado atual no localStorage
+            const isDark = document.body.classList.contains("dark-mode");
+            localStorage.setItem("theme", isDark ? "dark" : "light");
         }
+
+        // Aplica o tema salvo ao carregar a página
+        window.addEventListener("DOMContentLoaded", function() {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark-mode");
+            }
+        });
+
+        // Evento no botão (caso ainda não tenha)
+        document.getElementById("toggle-theme").addEventListener("click", toggleDarkMode);
     </script>
 
     <script>
